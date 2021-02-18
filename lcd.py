@@ -46,12 +46,18 @@ while(True):
         lcd.write_string("+")
     elif value_celcius < previous_value_celcius:
         lcd.write_string("-")
-    lcd.write_string(" / ")
+    else:
+        lcd.write_string(" ")
+
+    lcd.write_string("  ")
+
     lcd.write_string('{:.2f}'.format(value_farenheit) + "F")
     if previos_value_farenheit < value_farenheit:
         lcd.write_string("+")
     elif value_farenheit < previos_value_farenheit:
         lcd.write_string("-")
+    else:
+        lcd.write_string(" ")
 
     previous_value_celcius = value_celcius
     previos_value_farenheit = value_farenheit

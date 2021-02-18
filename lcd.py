@@ -1,5 +1,6 @@
 # python lcd.py "message"
 import sys
+import glob
 from RPLCD.gpio import CharLCD
 from RPi import GPIO
 
@@ -19,8 +20,9 @@ lcd = CharLCD(numbering_mode=GPIO.BCM, pin_rs=0, pin_e=5, pins_data=[6, 13, 19, 
 lcd.clear()
 
 # Read Temperature
-f = open("/sys/bus/e1/devices/*/temperature", "r")
-print(f.read())
+temperature_path = glob.glob('/sys/bus/w1/devices/28-*')[0] + "/temperature"
+file = open(temperature_path)
+raw_temp = file.read()
 
-lcd.write_string(f.read())
+lcd.write_string(raw_temp)
 

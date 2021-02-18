@@ -19,17 +19,22 @@ GPIO.setup(26, GPIO.OUT)  # D7
 lcd = CharLCD(numbering_mode=GPIO.BCM,
               pin_rs=0, pin_e=5, pins_data=[6, 13, 19, 26],
               cols=16, rows=2)
-lcd.clear()
 
-
-# Read Temperature
 temperature_path = glob.glob('/sys/bus/w1/devices/28-*')[0] + "/temperature"
-file = open(temperature_path)
-raw_temp = float(file.read())
+while(True):
+    lcd.clear()
+    # Read Temperature
+    file = open(temperature_path)
+    raw_temp = float(file.read())
 
-value_celcius = raw_temp / 1000
-value_farenheit = (value_celcius * (9/5)) + 32
+    value_celcius = raw_temp / 1000
+    value_farenheit = (value_celcius * (9.0/5.0)) + 32
 
-# Show Temperature 
-lcd.write_string("Celcius: " + str(value_celcius) + "\r\n"
-                 + "Farenheit: " + str(value_farenheit))
+    # Show Temperature 
+    lcd.write_string("Celcius: " + str(value_celcius))
+    crlf()
+    lcd.write_string("Farenheit: " + str(value_farenheit))
+
+    sleep(1)
+
+

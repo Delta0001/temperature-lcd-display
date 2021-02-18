@@ -38,3 +38,4 @@ Display the temperature value found in /sys/bus/w1/devices/28-XXXXXXXXXXXX/tempe
 References:
 - https://rplcd.readthedocs.io/en/stable/
 - https://www.circuitbasics.com/raspberry-pi-ds18b20-temperature-sensor-tutorial/
+- https://rplcd.readthedocs.io/en/stable/usage.html

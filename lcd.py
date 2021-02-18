@@ -2,21 +2,25 @@
 import sys
 from RPLCD.gpio import CharLCD
 from RPi import GPIO
+
+# GPIO Setup
 GPIO.setwarnings(False)
-
 GPIO.setmode(GPIO.BCM)
+GPIO.setup(0, GPIO.OUT)  # RS
+GPIO.setup(5, GPIO.OUT)  # E
+GPIO.setup(6, GPIO.OUT)  # D4
+GPIO.setup(11, GPIO.OUT) # V0
+GPIO.setup(13, GPIO.OUT) # D5
+GPIO.setup(19, GPIO.OUT) # D6
+GPIO.setup(26, GPIO.OUT) # D7
 
-GPIO.setup(0,GPIO.OUT)
-GPIO.setup(5,GPIO.OUT)
-GPIO.setup(6,GPIO.OUT)
-GPIO.setup(11,GPIO.OUT)
-GPIO.setup(13,GPIO.OUT)
-GPIO.setup(19,GPIO.OUT)
-GPIO.setup(26,GPIO.OUT)
-
-# lcd = CharLCD(numbering_mode=GPIO.BOARD, pin_rs=27, pin_rw=25, pin_e=29, pins_data=[37, 35, 33, 31], cols=16, rows=2) # pin_rw is grounded
-lcd = CharLCD(numbering_mode=GPIO.BCM, pin_rs=0, pin_e=5, pins_data=[6,13,19,26], cols=16, rows=2)
-
+# LCD Setup
+lcd = CharLCD(numbering_mode=GPIO.BCM, pin_rs=0, pin_e=5, pins_data=[6, 13, 19, 26], cols=16, rows=2)
 lcd.clear()
-lcd.write_string(sys.argv[1])
+
+# Read Temperature
+f = open("/sys/bus/e1/devices/*/temperature", "r")
+print(f.read())
+
+lcd.write_string(f.read())
 

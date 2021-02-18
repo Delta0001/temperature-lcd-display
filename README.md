@@ -11,6 +11,7 @@ Parts:
 Setup:
 - Add ``dtoverlay=w1-gpio`` to ``/boot/config/`` to enable 1-Wire kernel module
 - Add ``dtoverlay=dwc2`` to ``/boot/config.txt`` and ``modules-load=dwc2,g_ether`` after ``rootwait`` in ``/boot/cmdline.txt`` to the enable OTG Ethernet module (for debugging since we don't have wifi)
+- ``pip install PILCD``
 
 1.  VSS - GND
 2.  VDD - 5V

@@ -22,10 +22,11 @@ lcd.clear()
 # Read Temperature
 temperature_path = glob.glob('/sys/bus/w1/devices/28-*')[0] + "/temperature"
 file = open(temperature_path)
-raw_temp = int( file.read() )
+raw_temp = float( file.read() )
 
 value_celcius = raw_temp / 1000
 value_farenheit = ( value_celcius * (9/5) ) + 32
 
-lcd.write_string( str(value_celcius) + "\r\n" + str(value_farenheit) )
+lcd.write_string( "Celcius: " + str(value_celcius) + "\r\n" 
+                + "Farenheit: " + str(value_farenheit) )
 

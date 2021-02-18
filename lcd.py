@@ -31,8 +31,8 @@ while(True):
     raw_temp = float(file.read())
 
     # Calculate Temperature
-    value_celcius = raw_temp / 1000
-    value_farenheit = (value_celcius * (9.0/5.0)) + 32
+    value_celcius = round(raw_temp / 1000, 2)
+    value_farenheit = round((value_celcius * (9.0/5.0)) + 3, 2)
 
     # Display Temperature 
     lcd.write_string("Celcius: " + str(value_celcius))

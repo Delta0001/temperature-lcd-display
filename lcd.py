@@ -27,7 +27,7 @@ previous_value_celcius = 0
 previos_value_farenheit = 0
 
 while(True):
-    home()  # reset curos to beginning
+    lcd.home()  # reset curos to beginning
     # Read Temperature
     file = open(temperature_path)
     raw_temp = float(file.read())

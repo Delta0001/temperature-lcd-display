@@ -24,5 +24,9 @@ temperature_path = glob.glob('/sys/bus/w1/devices/28-*')[0] + "/temperature"
 file = open(temperature_path)
 raw_temp = file.read()
 
-lcd.write_string(raw_temp)
+value_celcius = raw_temp / 1000
+value_farenheit = ( value_celcius * (9/5) ) + 32
+
+lcd.write_string(value_celcius + "\r\n" + value_farenheit = ( value_celcius * (9/5) ) + 32
+)
 

@@ -34,7 +34,7 @@ while(True):
 
     # Calculate Temperature
     value_celcius = round(raw_temp / 1000, 2)
-    value_farenheit = round((value_celcius * (9.0/5.0)) + 3, 2)
+    value_farenheit = round((value_celcius * (9.0/5.0)) + 32, 2)
 
     # Display Temperature
     lcd.write_string("Temperature:")

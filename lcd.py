@@ -1,5 +1,6 @@
 # python lcd.py
 import glob
+import time
 from RPLCD.gpio import CharLCD
 from RPi import GPIO
 
@@ -51,4 +52,4 @@ while(True):
 
     previous_value_celcius = value_celcius
     previos_value_farenheit = value_farenheit
-    sleep(1)
+    time.sleep(1)

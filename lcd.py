@@ -27,6 +27,5 @@ raw_temp = file.read()
 value_celcius = raw_temp / 1000
 value_farenheit = ( value_celcius * (9/5) ) + 32
 
-lcd.write_string(value_celcius + "\r\n" + value_farenheit = ( value_celcius * (9/5) ) + 32
-)
+lcd.write_string(value_celcius + "\r\n" + value_farenheit)
 

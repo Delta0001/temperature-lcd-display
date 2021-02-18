@@ -36,16 +36,18 @@ while(True):
     value_celcius = round(raw_temp / 1000, 2)
     value_farenheit = round((value_celcius * (9.0/5.0)) + 3, 2)
 
-    # Display Temperature 
-    lcd.write_string("Celcius:  " + str(value_celcius))
+    # Display Temperature
+    lcd.write_string("Temperature:")
+    
+    lcd.crlf()
+
+    lcd.write_string(str(value_celcius) + "C")
     if previous_value_celcius < value_celcius:
         lcd.write_string("+")
     elif value_celcius < previous_value_celcius:
         lcd.write_string("-")
-
-    lcd.crlf()
-
-    lcd.write_string("Farenheit:" + str(value_farenheit))
+    lcd.write_string(" / ")
+    lcd.write_string(str(value_farenheit) + "F")
     if previos_value_farenheit < value_farenheit:
         lcd.write_string("+")
     elif value_farenheit < previos_value_farenheit:

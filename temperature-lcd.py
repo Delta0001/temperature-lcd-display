@@ -24,6 +24,7 @@ lcd.clear()
 # Init values
 temperature_path = glob.glob('/sys/bus/w1/devices/28-*')[0] + "/temperature"
 previous_value_celcius = 0
+count = 0
 
 while(True):
     lcd.home()  # reset curos to beginning
@@ -36,7 +37,13 @@ while(True):
     value_farenheit = round((value_celcius * (9.0/5.0)) + 32, 2)
 
     # Display Temperature
-    lcd.write_string("Temperature:")
+    lcd.write_string("Temperature")
+
+    if (count%2 == 0):
+        lcd.write_string(":")
+    else:
+        lcd.write_string(" ")
+    count=count+1
     
     lcd.crlf()
 
@@ -51,4 +58,4 @@ while(True):
     lcd.write_string('{:.2f}'.format(value_farenheit) + "F")
 
     previous_value_celcius = value_celcius
-    time.sleep(1)
+    time.sleep(0.5)

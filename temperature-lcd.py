@@ -27,10 +27,13 @@ previous_value_celcius = 0
 count = 0
 
 while(True):
-    lcd.home()  # reset curos to beginning
+    lcd.home()  # reset cursor to beginning
     # Read Temperature
     file = open(temperature_path)
-    raw_temp = float(file.read())
+    try:
+        raw_temp = float(file.read())
+    except:
+        continue
 
     # Calculate Temperature
     value_celcius = round(raw_temp / 1000, 2)
